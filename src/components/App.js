@@ -3,7 +3,9 @@ import SearchBar from "./SearchBar";
 import youtube from "../apis/youtube";
 
 class App extends React.Component {
-  //Send an asyncronous Get request using 'asynce' 'await' method through axios to youtube api
+  state = { videos: [] };
+
+  //Send an asynchronous Get request using 'asynce' 'await' method through axios to youtube api
   onTermSubmit = async term => {
     const response = await youtube.get("/search", {
       params: {
@@ -11,7 +13,7 @@ class App extends React.Component {
       }
     });
 
-    console.log(response);
+    this.setState({ videos: response.data.items });
   };
 
   render() {
