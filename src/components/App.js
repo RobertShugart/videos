@@ -7,6 +7,10 @@ import VideoDetail from "../components/VideoDetail";
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
 
+  componentDidMount() {
+    this.onTermSubmit("buildings");
+  }
+
   //Send an asynchronous Get request using 'asynce' 'await' method through axios to youtube api
   onTermSubmit = async term => {
     const response = await youtube.get("/search", {
